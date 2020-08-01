@@ -1,0 +1,81 @@
+body {
+    margin: 50px;
+    color: rgba(0, 0, 0, 0.8);
+    /* text-align: center; */
+    height: 100vh;
+    /* display: flex;
+    flex-direction: column; */
+    background-color: rgb(236, 222, 204);
+}
+
+/* #center {
+    display: block;
+    margin: 20px auto;
+} */
+
+/* h2 {
+    margin: 10px 10px 20px 10px;
+} */
+
+#board {
+    margin: 20px auto;
+    display: grid;
+    grid-template-rows: repeat(3, 10vmin);
+    grid-template-columns: repeat(3, 10vmin);
+    grid-gap: 0vmin;
+}
+
+div {
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    font-size: 8vmin;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#sq0 {
+    border-width: 0px 3px 3px 0px;
+}
+
+#sq1 {
+    border-width: 0px 3px 3px 3px;
+}
+
+#sq2 {
+    border-width: 0px 0px 3px 3px;
+}
+
+#sq3 {
+    border-width: 3px 3px 3px 0px;
+}
+
+#sq4 {
+    border-width: 3px 3px 3px 3px;
+}
+
+#sq5 {
+    border-width: 3px 0px 3px 3px;
+}
+
+#sq6 {
+    border-width: 3px 3px 0px 0px;
+}
+
+#sq7 {
+    border-width: 3px 3px 0px 3px;
+}
+
+#sq8 {
+    border-width: 3px 0px 0px 3px;
+}
+
+#restart {
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    border-width: 6px;
+    border-color: rgba(0, 0, 0, 0.8);
+    border-style: solid;
+}

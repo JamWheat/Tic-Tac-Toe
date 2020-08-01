@@ -1,0 +1,18 @@
+## Tic-Tac-Toe
+
+#### The classic game, now on the world wide web!
+
+Players take turns marking a grid, the first to get three-in-a-row wins.
+
+Current features:
+- Players can take turns marking the grid.
+- Once marked, a grid cell cannot be overwritten (and it will not pass the current player's turn)
+- A restart button will clear the board and start a clean game.
+
+Planned future features:
+- The game will check for when there is a clear winner or a draw and end the game, announcing who has won (if anyone).
+- The game will announce whose turn it is as the game progresses.
+- If a player tries to make an already marked space the game will kindly remind them not to do that and let them try again.- The reset button will change to read 'play again!' once a game has ended, no matter the outcome.
+- The game will keep track of win count for each player.
+- The game will let the loser for the previous game go first in the next game, randomly deciding who will get the first turn in the first game.
+- Add a 'clear records' button, with a dialog window popping up to warn players they are about to reset the record.
