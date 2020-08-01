@@ -5,12 +5,10 @@
 /*------Variables (state)------*/
 // -1 = X, 1 = O
 let player = null
-// is the game over
 let gameOver = false
-// how did it end?
 let result = null
-// win states?
 let cellFills = []
+let double = null
 
 
 /*------Cached Element References------*/
@@ -41,17 +39,19 @@ init();
 
 function init(){
     // future feature: random first player?
+    
     player = -1
-    readout.innerText = "Let's play!";
+    // readout.innerText = `${(player === -1) ? `X`: `O`} player, it is your turn.`;
+    restartBtn.innerText = `Reset`
     gameOver = false
     result = null
+    double = false
     cellFills = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     render();
 }
 
 function cellPress(cell){
     //can the index of am array be easily refrecned by an element?
-    console.log(cell.target.id);
     if (cell.target.innerText === ''){
         if (cell.target.id === "sq0"){
             cellFills.splice(0, 1, player)
@@ -73,12 +73,10 @@ function cellPress(cell){
             cellFills.splice(8, 1, player)
         }
         passTurn();
+    } else {
+        double = true
     }
-    //pass to endCheck()?
     endCheck();
-    // console.log(cell.target.innerText)
-    // console.log(cell.target.id)
-    // console.log(cellFills)
 }
 
 function passTurn(){
@@ -119,52 +117,28 @@ function endCheck(){
         result = 'draw';
         // render()
     }
-    // if (player === 1) {
-    //     player = -1
-    // } else if (player === -1) {
-    //     player = 1
-    // }
-    console.log(result)
-    console.log(gameOver)
     render();
 }
-//
-//      check the cellFills array for a 0
-//  - runs through each of the win possibilities
-//      - for each check, add up the total of the squares, if it adds up to 3 or -3 that means a player has won, set which player has won
-//      - just looking at particular series on indexes in cellFills
-//      - sets in question:
-            
-            // - secpmd row = 3, 4, 5
-            // - third row = 6, 7, 8
-            // - first colomn = 0, 3, 6
-            // - secpmd column = 1, 5, 7
-            // - third column = 2, 5, 8
-            // - first diagonal = 0, 4, 8
-            // - second diagonal = 2, 4, 6
-//  - if it runs though all 8 win possibilities and there were no winners, check if the board is full (check the cellFills array for a 0). if so, declaire a tie
-//  - set winner
-//  - change reset button text
-//  - finally, pass to render
 
 function checkTotal(x,y,z){
     return Math.abs(x+y+z);
 }
 
-
-// Render function:
-//  Future feature: a verity of readouts?
-//  - if the game has ended, make the whole board unclickable
-
 function render(){
     if (gameOver === false) {
-        readout.innerText = `${(player === -1) ? `X`: `O`} player, it is your turn.`;
+        if (double === false) {
+            readout.innerText = `${(player === -1) ? `X`: `O`} player, it is your turn.`
+        } else {
+            readout.innerText = `Can't mark a box that's already been marked, this isn't the wild west.\nTry again, ${(player === -1) ? `X`: `O`} player`
+            double = false;
+        }
     } else {
         if (result === 'draw') {
             readout.innerText = `It's a draw!`
         } else {
             readout.innerText = `It's over, ${(result === -1) ? `X`: `O`} player is the winner!`
         }
+        restartBtn.innerText = `Play again!`
     }
     for(let i = 0; i < cellFills.length; i++){
         gridEach[i].innerText = renderWhat(cellFills[i]);
