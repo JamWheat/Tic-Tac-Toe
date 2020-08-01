@@ -1,6 +1,8 @@
 ## Tic-Tac-Toe
 
-#### The classic game, now on the world wide web!
+### The classic game, now on the world wide web!
+
+#### Created as an exercise in DOM manipulation and user interaction
 
 Players take turns marking a grid, the first to get three-in-a-row wins.
 
