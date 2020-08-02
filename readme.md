@@ -13,7 +13,7 @@ Current features:
 - The game will announce whose turn it is as the game progresses.
 - If a player tries to make an already marked space the game will kindly remind them not to do that and let them try again.
 - The game will check for when there is a clear winner or a draw and end the game, announcing who has won (if anyone).
-- The reset button changes to read 'play again!' once a game has ended, no matter the outcome.
+- ~~The reset button changes to read 'play again!' once a game has ended, no matter the outcome.~~ Button fixed to say "New Game"
 - Allow players to input their names in place of 'X player' and 'O player.'
 
 

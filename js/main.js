@@ -10,6 +10,8 @@ let result = null
 let cellFills = []
 let double = null
 let gameOn = false
+let xVictories = null;
+let oVictories = null;
 
 
 /*------Cached Element References------*/
@@ -49,12 +51,11 @@ nameButton.addEventListener('click', function(){
 hardInit();
 
 function hardInit(){
-    restartBtn.innerText = `Reset`
     gameOver = true
     gameOn = false
 
-    //reset win counts
-
+    xVictories = 0
+    oVictories = 0
     result = null
     double = false
 
@@ -69,8 +70,8 @@ function writeName(){
     if (xName.innerText === 'waiting...') {
         xName.innerText = nameInput.value;
         nameInput.value = ''
-    } else if (oName.innerText === 'waiting...'){
         readout.innerText = `Okay! and 0 Player, what shall we call you?`
+    } else if (oName.innerText === 'waiting...'){
         oName.innerText = nameInput.value;
         nameInput.value = ''
         nameInput.style.display = "none";
@@ -85,7 +86,6 @@ function init(){
     // future feature: random first player?
     
     player = -1
-    restartBtn.innerText = `Reset`
     gameOver = false
     result = null
     double = false
@@ -169,9 +169,13 @@ function checkTotal(x,y,z){
 function render(){
     if (gameOver === false) {
         if (double === false) {
-            readout.innerText = `${(player === -1) ? `${xName.innerText}`: `${oName.innerText}`}, it is your turn.`;
+            if (cellFills.includes(1) === false && cellFills.includes(-1) === false){
+                readout.innerText = `Game on! ${(player === -1) ? `${xName.innerText}`: `${oName.innerText}`}, you're up first.`
+            } else {
+                readout.innerText = `${(player === -1) ? `${xName.innerText}`: `${oName.innerText}`}, it is your turn.`;
+            }
         } else {
-            readout.innerText = `Can't mark a box that's already been marked, this isn't the wild west.\nTry again, ${(player === -1) ? `X`: `O`} player`
+            readout.innerText = `Can't mark a box that's already been marked, this isn't the wild west.\nPick an empty box, ${(result === -1) ? `${xName.innerText}`: `${oName.innerText}`}`
             double = false;
         }
     } else {
@@ -179,12 +183,19 @@ function render(){
             readout.innerText = `It's a draw!`
         } else {
             readout.innerText = `It's over, ${(result === -1) ? `${xName.innerText}`: `${oName.innerText}`} is the winner!`
+            // (result === -1) ? xVictories += 1 : oVictories += 1;
+            if (result === -1){
+                xVictories += 1;
+            } else {
+                oVictories += 1;
+            }
         }
-        restartBtn.innerText = `Play again!`
     }
     for(let i = 0; i < cellFills.length; i++){
         gridEach[i].innerText = renderWhat(cellFills[i]);
     }
+    xWins.innerText = `Wins: ${xVictories}`
+    oWins.innerText = `Wins: ${oVictories}`
 }
 
 function renderWhat(i){
