@@ -9,22 +9,28 @@ let gameOver = false
 let result = null
 let cellFills = []
 let double = null
+let gameOn = false
 
 
 /*------Cached Element References------*/
 const readout = document.getElementById("message");
 const restartBtn = document.getElementById("restart");
 const gridAll = document.getElementById("board");
-const gridEach = document.querySelectorAll("div");
-// const sq0 = document.getElementById("sq0").id = "0"
-// references for each cell?
-
+const gridEach = document.getElementsByClassName("cell");
+const xName = document.getElementById("xName");
+const xWins = document.getElementById("xWins");
+const oName = document.getElementById("oName");
+const oWins = document.getElementById("oWins");
+const nameInput = document.getElementById("nameInput");
+const nameButton = document.getElementById("namer");
 
 /*------Event Listeners------*/
 
 // reset button
 restartBtn.addEventListener('click', function(){
-    init();
+    if (gameOn === true){
+        init();
+    }
 });
 // onclick for each cell, within the bubble of section (will that click on section itself?)
 gridAll.addEventListener('click', function(cell){
@@ -33,15 +39,52 @@ gridAll.addEventListener('click', function(cell){
     }
 });
 
+nameButton.addEventListener('click', function(){
+    writeName();
+})
+
 /*------Functions------*/
 
-init();
+// init();
+hardInit();
+
+function hardInit(){
+    restartBtn.innerText = `Reset`
+    gameOver = true
+    gameOn = false
+
+    //reset win counts
+
+    result = null
+    double = false
+
+    restartBtn.style.opacity = 0.6;
+    cellFills = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    readout.innerText = `Welcome! Let's get to know each other! X Player, what is your name?`;
+    nameInput.style.display = "inline";
+    nameButton.style.display = "inline";
+}
+
+function writeName(){
+    if (xName.innerText === 'waiting...') {
+        xName.innerText = nameInput.value;
+        nameInput.value = ''
+    } else if (oName.innerText === 'waiting...'){
+        readout.innerText = `Okay! and 0 Player, what shall we call you?`
+        oName.innerText = nameInput.value;
+        nameInput.value = ''
+        nameInput.style.display = "none";
+        nameButton.style.display = "none";
+        gameOn = true
+        restartBtn.style.opacity = 1;
+        init();
+    }
+}
 
 function init(){
     // future feature: random first player?
     
     player = -1
-    // readout.innerText = `${(player === -1) ? `X`: `O`} player, it is your turn.`;
     restartBtn.innerText = `Reset`
     gameOver = false
     result = null
@@ -99,7 +142,6 @@ function endCheck(){
             // - third column = 2, 5, 8
             // - first diagonal = 0, 4, 8
             // - second diagonal = 2, 4, 6
-    console.log(checkTotal(cellFills[1],cellFills[5],cellFills[7]))
     if (checkTotal(cellFills[0],cellFills[1],cellFills[2]) === 3 ||
         checkTotal(cellFills[3],cellFills[4],cellFills[5]) === 3 ||
         checkTotal(cellFills[6],cellFills[7],cellFills[8]) === 3 ||
@@ -127,7 +169,7 @@ function checkTotal(x,y,z){
 function render(){
     if (gameOver === false) {
         if (double === false) {
-            readout.innerText = `${(player === -1) ? `X`: `O`} player, it is your turn.`
+            readout.innerText = `${(player === -1) ? `${xName.innerText}`: `${oName.innerText}`}, it is your turn.`;
         } else {
             readout.innerText = `Can't mark a box that's already been marked, this isn't the wild west.\nTry again, ${(player === -1) ? `X`: `O`} player`
             double = false;
@@ -136,7 +178,7 @@ function render(){
         if (result === 'draw') {
             readout.innerText = `It's a draw!`
         } else {
-            readout.innerText = `It's over, ${(result === -1) ? `X`: `O`} player is the winner!`
+            readout.innerText = `It's over, ${(result === -1) ? `${xName.innerText}`: `${oName.innerText}`} is the winner!`
         }
         restartBtn.innerText = `Play again!`
     }

@@ -14,6 +14,7 @@ body {
 
 h1 {
     font-size: 64px;
+    margin-bottom: 0;
 }
 
 p {
@@ -25,9 +26,9 @@ h2 {
     font-size: 32px;
 }
 
-#center {
+.center {
     display: inline-block;
-    margin: 20px auto 40px auto;
+    margin: 0 auto 40px auto;
 }
 
 /* h2 {
@@ -42,12 +43,16 @@ h2 {
     grid-gap: 0vmin;
 }
 
-div {
+.cell {
     font-family: 'Permanent Marker', cursive;
     border: 3px solid rgba(0, 0, 0, 0.8);
     font-size: 70px;
     text-align: center;
     vertical-align: middle;
+}
+
+.side {
+    display: inline-block;
 }
 
 #sq0 {
@@ -86,7 +91,21 @@ div {
     border-width: 3px 0px 0px 3px;
 }
 
-#restart {
+input {
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 30px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    border-width: 6px;
+    border-color: rgba(0, 0, 0, 0.8);
+    border-style: solid;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+button {
     font-family: 'Walter Turncoat', cursive;
     font-size: 30px;
     padding: 10px 20px;

@@ -14,20 +14,38 @@
     <h1>Tic-Tac-Toe</h1>
     <p>Take turns marking X or 0, first player to get three in a row wins!</p>
     <h2 id="message">Message</h2>
-    <span id="center">
-        <!-- section was a class rather than an id? -->
-        <section id="board">
-            <div id="sq0"></div>
-            <div id="sq1"></div>
-            <div id="sq2"></div>
-            <div id="sq3"></div>
-            <div id="sq4"></div>
-            <div id="sq5"></div>
-            <div id="sq6"></div>
-            <div id="sq7"></div>
-            <div id="sq8"></div>
-        </section>    
-    </span>
+    <input type="text" placeholder="name" id="nameInput">
+    <button id="namer">Submit</button>
+    <table>
+        <tr>
+            <td width = 250>
+                <h2>X Player:</h2>
+                <h2 id="xName">waiting...</h2>
+                <h2 id="xWins">Wins: 0</h2>
+            </td>
+            <td width = 300>
+                <span class="center">
+                <!-- section was a class rather than an id? -->
+                <section id="board">
+                    <div id="sq0" class="cell"></div>
+                    <div id="sq1" class="cell"></div>
+                    <div id="sq2" class="cell"></div>
+                    <div id="sq3" class="cell"></div>
+                    <div id="sq4" class="cell"></div>
+                    <div id="sq5" class="cell"></div>
+                    <div id="sq6" class="cell"></div>
+                    <div id="sq7" class="cell"></div>
+                    <div id="sq8" class="cell"></div>
+                </section>   
+                </span>
+            </td>
+            <td width = 250>
+                <h2>0 Player:</h2>
+                <h2 id="oName">waiting...</h2>
+                <h2 id="oWins">Wins: 0</h2>
+            </td>
+        </tr>
+    </table>
     <br>
     <button id="restart">Restart</button>
 </body>
