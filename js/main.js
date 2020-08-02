@@ -25,16 +25,17 @@ const oName = document.getElementById("oName");
 const oWins = document.getElementById("oWins");
 const nameInput = document.getElementById("nameInput");
 const nameButton = document.getElementById("namer");
+const resetScores = document.getElementById("resetScores");
+const newPlayers = document.getElementById("newPlayers");
 
 /*------Event Listeners------*/
 
-// reset button
 restartBtn.addEventListener('click', function(){
     if (gameOn === true){
         init();
     }
 });
-// onclick for each cell, within the bubble of section (will that click on section itself?)
+
 gridAll.addEventListener('click', function(cell){
     if(gameOver === false){
         cellPress(cell);
@@ -43,6 +44,23 @@ gridAll.addEventListener('click', function(cell){
 
 nameButton.addEventListener('click', function(){
     writeName();
+})
+
+resetScores.addEventListener('click', function(){
+    if (gameOn === true){
+        if (confirm("This will reset your scores to 0. Are you sure?") === true){
+            xVictories = 0;
+            oVictories = 0;
+            resetScores.style.opacity = 0.6;
+            init();
+        }
+    }
+})
+
+newPlayers.addEventListener('click', function(){
+    if (confirm('This well resent the player names and set the scores back to 0. Are you sure?') === true){
+        hardInit();
+    }
 })
 
 /*------Functions------*/
@@ -56,11 +74,19 @@ function hardInit(){
 
     xVictories = 0
     oVictories = 0
+    xWins.innerText = `Wins: ${xVictories}`
+    oWins.innerText = `Wins: ${oVictories}`
+    xName.innerText = 'waiting...'
+    oName.innerText = 'waiting...'
     result = null
     double = false
 
     restartBtn.style.opacity = 0.6;
+    resetScores.style.opacity = 0.6;
     cellFills = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for(let i = 0; i < cellFills.length; i++){
+        gridEach[i].innerText = renderWhat(cellFills[i]);
+    }
     readout.innerText = `Welcome! Let's get to know each other! X Player, what is your name?`;
     nameInput.style.display = "inline";
     nameButton.style.display = "inline";
@@ -166,6 +192,7 @@ function checkTotal(x,y,z){
     return Math.abs(x+y+z);
 }
 
+//In the end my render() is doing way more than it should be. The various if statements should be slipt off into their own fuctions and then render() can run through them. If I have time and energy I may tackle that.
 function render(){
     if (gameOver === false) {
         if (double === false) {
@@ -189,6 +216,7 @@ function render(){
             } else {
                 oVictories += 1;
             }
+            resetScores.style.opacity = 1;
         }
     }
     for(let i = 0; i < cellFills.length; i++){

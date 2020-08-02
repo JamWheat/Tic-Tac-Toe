@@ -1,13 +1,14 @@
 body {
     width: 800px;
     font-family: 'Walter Turncoat', cursive;
-    margin: 50px;
-    color: rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    color: rgba(9, 8, 48, 0.8);
     text-align: center;
     height: 80vh;
     /* display: flex;
     flex-direction: column; */
-    background-image: url(https://i.imgur.com/NHQuP3I.jpg);
+    /* background-image: url(https://i.imgur.com/NHQuP3I.jpg); */
+    background-image: url(https://i.imgur.com/7mxqyFV.jpg);
     background-size: cover;
     background-color: rgb(236, 222, 204);
 }
@@ -23,12 +24,12 @@ p {
 }
 
 h2 {
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .center {
     display: inline-block;
-    margin: 0 auto 40px auto;
+    margin: 0 auto;
 }
 
 /* h2 {
@@ -45,7 +46,7 @@ h2 {
 
 .cell {
     font-family: 'Permanent Marker', cursive;
-    border: 3px solid rgba(0, 0, 0, 0.8);
+    border: 4px solid  rgba(9, 8, 48, 0.8);
     font-size: 70px;
     text-align: center;
     vertical-align: middle;
@@ -56,67 +57,58 @@ h2 {
 }
 
 #sq0 {
-    border-width: 0px 3px 3px 0px;
+    border-width: 0px 4px 4px 0px;
 }
 
 #sq1 {
-    border-width: 0px 3px 3px 3px;
+    border-width: 0px 4px 4px 4px;
 }
 
 #sq2 {
-    border-width: 0px 0px 3px 3px;
+    border-width: 0px 0px 4px 4px;
 }
 
 #sq3 {
-    border-width: 3px 3px 3px 0px;
+    border-width: 4px 4px 4px 0px;
 }
 
 #sq4 {
-    border-width: 3px 3px 3px 3px;
+    border-width: 4px 4px 4px 4px;
 }
 
 #sq5 {
-    border-width: 3px 0px 3px 3px;
+    border-width: 4px 0px 4px 4px;
 }
 
 #sq6 {
-    border-width: 3px 3px 0px 0px;
+    border-width: 4px 4px 0px 0px;
 }
 
 #sq7 {
-    border-width: 3px 3px 0px 3px;
+    border-width: 4px 4px 0px 4px;
 }
 
 #sq8 {
-    border-width: 3px 0px 0px 3px;
+    border-width: 4px 0px 0px 4px;
 }
 
-input {
+button, input {
     font-family: 'Walter Turncoat', cursive;
-    font-size: 30px;
+    font-size: 25px;
     padding: 10px 20px;
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.0);
-    color: rgba(0, 0, 0, 0.8);
+    color:  rgba(9, 8, 48, 0.8);
     border-radius: 8px;
     border-width: 6px;
-    border-color: rgba(0, 0, 0, 0.8);
+    border-color:  rgba(9, 8, 48, 0.8);
     border-style: solid;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 10px 10px 10px;
 }
 
-button {
-    font-family: 'Walter Turncoat', cursive;
-    font-size: 30px;
-    padding: 10px 20px;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.0);
-    color: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    border-width: 6px;
-    border-color: rgba(0, 0, 0, 0.8);
-    border-style: solid;
-    background-color: rgba(255, 255, 255, 0.3);
+::placeholder {
+    color:  rgba(9, 8, 48, 0.445);
 }
 
 .marker {
