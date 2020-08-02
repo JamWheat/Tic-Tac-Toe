@@ -15,12 +15,10 @@ Current features:
 - The game will check for when there is a clear winner or a draw and end the game, announcing who has won (if anyone).
 - ~~The reset button changes to read 'play again!' once a game has ended, no matter the outcome.~~ Button fixed to say "New Game"
 - Allow players to input their names in place of 'X player' and 'O player.'
+- A 'reset players' button that resets the whole game, clearing the player names and resetting the scores.
+- The game will determine a random first place if it is the first game for a set of players, or if the previous game was a draw.
+- The game will let the loser of a  previous game go first in the next game
 - The game will keep track of win count for each player.
 - A 'resets scores' button that resets the win reconds for each player to 0
 - A 'reset players' button that resets the whole game, clearing the player names and resetting the scores.
 
-
-Planned future features:
-
-- A 'reset players' button that resets the whole game, clearing the player names and resetting the scores.
-- The game will let the loser for the previous game go first in the next game, randomly deciding who will get the first turn in the first game.

@@ -108,10 +108,25 @@ function writeName(){
     }
 }
 
+function rando(){
+    if (Math.random() > .5){
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
 function init(){
     // future feature: random first player?
     
-    player = -1
+    if (xWins.innerText === "Wins: 0" && oWins.innerText === "Wins: 0") {
+        player = rando();
+        console.log('random check')
+    } else if (result === "draw"){
+        player = rando();
+        console.log('random check');
+    }
+    
     gameOver = false
     result = null
     double = false
@@ -156,18 +171,15 @@ function passTurn(){
     }
 }
 
-
-
 function endCheck(){
-//  - called after each click to check for a winner
-    // - first row = 0, 1, 2
-    // - secpmd row = 3, 4, 5
-            // - third row = 6, 7, 8
-            // - first colomn = 0, 3, 6
-            // - secpmd column = 1, 5, 7
-            // - third column = 2, 5, 8
-            // - first diagonal = 0, 4, 8
-            // - second diagonal = 2, 4, 6
+        // - first row = 0, 1, 2
+        // - secpmd row = 3, 4, 5
+        // - third row = 6, 7, 8
+        // - first colomn = 0, 3, 6
+        // - secpmd column = 1, 5, 7
+        // - third column = 2, 5, 8
+        // - first diagonal = 0, 4, 8
+        // - second diagonal = 2, 4, 6
     if (checkTotal(cellFills[0],cellFills[1],cellFills[2]) === 3 ||
         checkTotal(cellFills[3],cellFills[4],cellFills[5]) === 3 ||
         checkTotal(cellFills[6],cellFills[7],cellFills[8]) === 3 ||
@@ -179,11 +191,9 @@ function endCheck(){
         gameOver = true;
         passTurn();
         result = player
-        // render()
     } else if (cellFills.includes(0) === false){
         gameOver = true;
         result = 'draw';
-        // render()
     }
     render();
 }
@@ -192,7 +202,7 @@ function checkTotal(x,y,z){
     return Math.abs(x+y+z);
 }
 
-//In the end my render() is doing way more than it should be. The various if statements should be slipt off into their own fuctions and then render() can run through them. If I have time and energy I may tackle that.
+//In the end my render() is doing way more than it should be. The various if() statements should be slipt off into their own fuctions and then render() can run through them as needed. If I have time and energy I may tackle that.
 function render(){
     if (gameOver === false) {
         if (double === false) {
@@ -216,6 +226,7 @@ function render(){
             } else {
                 oVictories += 1;
             }
+            passTurn();
             resetScores.style.opacity = 1;
         }
     }
@@ -226,10 +237,10 @@ function render(){
     oWins.innerText = `Wins: ${oVictories}`
 }
 
-function renderWhat(i){
-    if (i === 0){
+function renderWhat(n){
+    if (n === 0){
         return ''
-    } else if (i === -1){
+    } else if (n === -1){
         return 'X'
     } else {
         return 'O'
