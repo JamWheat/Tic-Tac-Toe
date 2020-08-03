@@ -22,3 +22,5 @@ Current features:
 - A 'resets scores' button that resets the win reconds for each player to 0
 - A 'reset players' button that resets the whole game, clearing the player names and resetting the scores.
 
+Potential Future Features:
+- Highlight the sidebar of current player
